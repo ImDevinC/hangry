@@ -8,20 +8,7 @@
    }
    
    .container {
-     margin: 0 auto;
      width: 960px;
-   }
-   
-   .title {
-     float: left;
-     font-size: 5em;
-   }
-   
-   .phonetic,
-   .part-of-speech,
-   .definition {
-     clear: left;
-     float: left;
    }
    
    .content {
