@@ -7,15 +7,22 @@
      color: #FFFFFF;
    }
    
-   
-   .header {
-     text-align: center;
+   .container {
+     margin: 0 auto;
+     width: 960px;
    }
    
    .title {
+     float: left;
      font-size: 5em;
    }
    
+   .phonetic,
+   .part-of-speech,
+   .definition {
+     clear: left;
+     float: left;
+   }
    
    .content {
      margin: 0 auto;
@@ -35,11 +42,19 @@
    }
    
    .footer {
+     bottom: 0;
+     height: 120px;
+     left: 0;
+     position: absolute;
+     width: 100%;
+   }
+   
+   .foursquare {
      background-image: url('../img/poweredByFoursquare_white.png');
      background-position: center center;
      background-repeat: no-repeat;
-     bottom: 0;
-     height: 120px;
-     position: absolute;
-     width: 100%;
+     display: block;
+     height: 121px;
+     margin: 0 auto;
+     width: 482px;
    }
