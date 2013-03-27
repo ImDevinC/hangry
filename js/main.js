@@ -2,76 +2,12 @@ $(document).ready(function() {
 
     var people = ['Brian Drelling', 'Brian Lewis', 'Daniel Bearden', 'Devin Collins', 'Eric Stanley', 'Milly Carter'];
     
-    var restaurants = [
-        {
-            "name": "Brasa",
-            "likes": [
-                "Brian Drelling",
-                "Brian Lewis",
-                "Daniel Bearden",
-                "Devin Collins",
-                "Eric Stanley",
-                "Milly Carter"
-            ],
-            "dislikes": [
-                "Milly Carter"
-            ],
-            "type": "Cuisine"
-        },
-        {
-            "name": "On's Kitchen",
-            "likes": [
-                "Brian Drelling",
-                "Brian Lewis",
-                "Daniel Bearden",
-                "Eric Stanley",
-                "Milly Carter"
-            ],
-            "dislikes": [
-                "Devin Collins"
-            ],
-            "type": "Cuisine"
-        },
-        {
-            "name": "Applebees",
-            "likes": [
-                "Brian Drelling",
-                "Brian Lewis",
-                "Daniel Bearden",
-                "Devin Collins",
-                "Eric Stanley",
-                "Milly Carter"
-            ],
-            "dislikes": [],
-            "type": "Cuisine"
-        },
-        {
-            "name": "Buffalo Wild Wings",
-            "likes": [
-                "Brian Drelling",
-                "Brian Lewis",
-                "Daniel Bearden",
-                "Devin Collins",
-                "Eric Stanley",
-                "Milly Carter"
-            ],
-            "dislikes": [],
-            "type": "Cuisine"
-        },
-        {
-            "name": "TGI Fridays",
-            "likes": [
-                "Brian Drelling",
-                "Brian Lewis",
-                "Daniel Bearden",
-                "Devin Collins",
-                "Eric Stanley",
-                "Milly Carter"
-            ],
-            "dislikes": [],
-            "type": "Cuisine"
-        }
-    ];
+    var restaurants;
+    
+    $.getJSON('json/restaurants.json', function(data) {
+        restaurants = data;
+        console.log(restaurants);
+    });
     
     $(window).load(function() {
         populateSelects();
@@ -127,4 +63,23 @@ $(document).ready(function() {
         });
         
         return people;
+    }
+
+    var url = 'https://api.foursquare.com/v2/venues/explore';
+    var oauth = 'D53VJTZAO1P0OYL0JNLTV3HDI21IMKUTSQXL1BCYFBVWUCVK';
+    var apiVersion = '20130326';
+    
+    function getVenues() {
+        $.ajax({
+            data: { 
+                ll: '40.7,-74', 
+                oauth_token: oauth, 
+                v: apiVersion 
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+            },
+            url: url
+        });
     }
