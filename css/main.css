@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.wrapper {
+  left: 25%;
+  position: absolute;
+  width: 50%;
+}
+
+.section {
+  clear: left;
+  float: left;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.title {
+  color: #FF3333;
+  display: block;
+  font-size: 5em;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.tagline {
+  color: #FF3333;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.restaurants {
+  border: 5px solid #FF3333;
+  font-size: 3em;
+  padding: 20px;
+  width: 100%;
+}
+
+.people {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.people li {
+  box-sizing: border-box;
+  float: left;
+  padding: 20px;
+  width: 33.3%;
+}
+
+.people li a {
+  border: 2px solid #E7E7E7;
+  box-sizing: border-box;
+  color: #CCC;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+}
+
+.people li.active a {
+  border-color: #FF3333;
+  color: #000;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

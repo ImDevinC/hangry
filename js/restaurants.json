@@ -1,0 +1,15 @@
+{
+    "Restaurant": {
+        "Likes": [
+            "a",
+            "b",
+            "c"
+        ],
+        "Dislikes": [
+            "a",
+            "b",
+            "c"
+        ],
+        "Type": "Cuisine"
+    }
+}
