@@ -1,8 +1,15 @@
-var venues;
-    
 $(document).ready(function() {
     
+    var appEnabled = false;
     var restaurants;
+    var venues;
+    
+    var taunts = [
+      "Fine. Just don't fucking eat then. See if I care.",
+      "Wow, fuck you. I hope you starve.",
+      "Eat a dick you picky asshole.",
+      "Blow me, bitch. Go eat at McDonalds."
+    ];
     
     if(navigator.geolocation)
     {
@@ -14,11 +21,15 @@ $(document).ready(function() {
     });
     
     function skipVenue() {
-        venues.shift();
-        if (venues.length > 0) {
-            $('.venue').text(venues[0].venue.name);
-        } else {
-            $('.venue').text("Fine. Just don't fucking eat then.");
+        if (appEnabled) {
+            venues.shift();
+            if (venues.length > 0) {
+                $('.venue').text(venues[0].venue.name);
+            } else {
+                var r = Math.round(Math.random() * (taunts.length - 1));
+                $('.venue').text(taunts[r]);
+                $('.btn[data-action="skip"]').attr('disabled', 'disabled');
+            }
         }
     }
     
@@ -46,6 +57,8 @@ $(document).ready(function() {
                 venues = data.response.groups[0].items;
                 venues.shuffle();
                 $('.venue').text(venues[0].venue.name);
+                $('.btn[data-action="skip"]').removeAttr('disabled');
+                appEnabled = true;
             },
             url: url
         });
