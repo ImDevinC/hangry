@@ -13,12 +13,50 @@ $(document).ready(function() {
     
     if(navigator.geolocation)
     {
-        navigator.geolocation.getCurrentPosition(getVenue);
+        navigator.geolocation.getCurrentPosition(getVenue, showError);
+    } else {
+        $('.')
     }
     
     $('.btn[data-action="skip"]').click(function() {
         skipVenue();
     });
+
+    $('.btn[data-action="zip"]').click(function() {
+        var zipText = $('input[data-value="zip"]').val();
+        if (zipText.length === 5) {
+          hideZip();
+          $('.venue').text('Loading . . .');
+          getVenue(zipText, true);
+        }
+    });
+
+    $('input[data-value="zip"]').keypress(function(e) {
+      if (e.which === 13) {
+        $('.btn[data-action="zip"]').focus().click();
+        return false;
+      }
+    });
+
+    $('input[data-value="zip"]').change(function() {
+      checkLength();
+    });
+    
+    $('input[data-value="zip"]').keyup(function() {
+      checkLength();
+    });
+
+    $('input[data-value="zip"]').keydown(function() {
+      checkLength();
+    });
+
+    function checkLength() {
+      if ($('input[data-value="zip"]').val().length === 5) {
+        $('.btn[data-action="zip"]').removeAttr('disabled');
+      } else {
+        $('.btn[data-action="zip"]').attr('disabled', 'disabled');
+      }
+    }
     
     function skipVenue() {
         if (appEnabled) {
@@ -33,25 +71,30 @@ $(document).ready(function() {
         }
     }
     
-    function getVenue(position) {
-        
-        var ll = position.coords.latitude + ',' + position.coords.longitude;
+    function getVenue(position, isZip) {
 
         var apiVersion = '20130326';
         var limit = 50;
         var oauth = 'D53VJTZAO1P0OYL0JNLTV3HDI21IMKUTSQXL1BCYFBVWUCVK';
         var section = 'food';
         var url = 'https://api.foursquare.com/v2/venues/explore';
-        
+
+        var ajaxData = {
+          limit: limit,
+          oauth_token: oauth,
+          section: section,
+          v: apiVersion
+        };
+        if (isZip) {
+          var zip = position;
+          ajaxData.near = position;
+        } else {
+          var ll = position.coords.latitude + ',' + position.coords.longitude;
+          ajaxData.ll = ll;
+        }
+
         $.ajax({
-            data: { 
-                limit: limit,
-                //near: 'Minneapolis, MN',
-                ll: ll,
-                oauth_token: oauth, 
-                section: section,
-                v: apiVersion 
-            },
+            data: ajaxData,
             dataType: 'json',
             success: function(data) {
                 venues = data.response.groups[0].items;
@@ -62,6 +105,35 @@ $(document).ready(function() {
             },
             url: url
         });
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          $('.venue').text('We need your location to find the nearest restaurants.');
+          showZip();
+          break;
+        case error.POSITION_UNAVAILABLE:
+          $('.venue').text('We couldn\'t find your location, are you sure you really exist?');
+          showZip();
+          break;
+        case error.TIMEOUT:
+          $('.venue').text('Took too long to get your location, why you playin\' me like that?');
+          showZip();
+          break;
+        default:
+          $('.venue').text('Oh man... you broke it, you broke everything!  Way to go.');
+          showZip();
+          break;
+      }
+    }
+
+    function showZip() {
+      $('.zip-code').removeClass('hidden');
+    }
+
+    function hideZip() {
+      $('.zip-code').addClass('hidden'); 
     }
 
     Array.prototype.shuffle = function() {

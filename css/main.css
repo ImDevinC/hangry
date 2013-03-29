@@ -30,6 +30,12 @@
      padding: 10px;
      text-align: center;
    }
+
+   .zip-code {
+     display: block;
+     text-align: center;
+     margin-bottom: 30px;
+   }
    
    .footer {
      bottom: 0;
