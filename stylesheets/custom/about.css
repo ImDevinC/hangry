@@ -1,0 +1,10 @@
+   .employees {
+    text-align: center;
+   }
+
+   .employee img {
+    height: 150;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+   }

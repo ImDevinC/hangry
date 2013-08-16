@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+   
+  body {
+    background-color: #FF3333;
+    color: #000;
+  }
+
+  .accordion-toggle {
+    background-color: #E3E3E3;
+    color: #333;
+  }
+
+  .accordion-inner {
+    background-color: #FFF;
+  }
+
+  .container-fluid {
+    background-color: #FFFFFF;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.065);
+    height: 0;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+  }
+
+  .content, .tab-content {
+    height: 100%;
+  }
+
+  .error-ticket > .row-fluid,
+  .settings-ticket > .row-fluid,
+  .maybe-result > .row-fluid {
+    text-align: center;
+  }
+  
+  .footer {
+    border-top: 1px solid #CC3333;
+    bottom: 0;
+    left: 0;
+    overflow: none;
+    width: 100%;
+  }
+
+  .foursquare {
+    background-image: url('../../images/libraries/foursquare/poweredByFoursquare_white.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+    height: 80px;
+    margin: 0 auto;
+    width: 482px;
+  }
+
+  .h1 {
+    display: inline-block;
+  }
+  
+  .header {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .navbar {
+    margin: 0;
+    overflow: none;
+  }
+  
+  .navbar .brand {
+    bottom: 0;
+    color: #FFFFFF;
+    font-size: 3em;
+    font-weight: bold;
+    height: 80px;
+    line-height: 80px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    text-shadow: none;
+    width: 100%;
+  }
+
+  .navbar-inner {
+    background-color: #FF3333;
+    background-image: none;
+    border: 0;
+    border-bottom: 1px solid #CC3333;
+    border-radius: 0;
+    box-shadow: none;
+    color: #FFFFFF;
+    height: 80px;
+    padding: 0;
+    position: relative;
+  }
+
+  .settings {
+    cursor: pointer;
+  }
+
+  .small-text {
+    float: left;
+  }
+
+  .tab-content {
+    overflow: auto;
+  }
+
+  .tab-pane {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  .ticket {
+    background-color: #F7F7F7;
+    box-shadow: 1px 1px 5px black;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Trebuchet MS";
+    margin-left: 25%;
+    padding: 10px;
+    width: 50%;
+  }
+
+  th {
+    text-align: left;
+  }
+  
+  .venue-location {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  
+  .venue-name {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  .venue-ticket .end-result .end-message {
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .venue-ticket .row-fluid {
+    margin-bottom: 10px;
+  }
+  
+  .venue-ticket .row-fluid:last-child {
+    margin-bottom: 0;
+  }
+  
+  .venue-ticket span:first-child {
+    color: #FF3333;
+    font-weight: bold;
+  }
+
+  .well {
+    color: #000;
+  }
+
+  @media all and (max-device-width: 480px), all and (max-width: 800px) {
+    body {
+      padding: 0;
+    }
+
+    .brand {
+      line-height: 40px;
+    }
+
+    .decision-bar .btn {
+      margin-top: 5px;
+    }
+
+    .foursquare {
+      background-image: url('../../images/libraries/foursquare/poweredByFoursquare_36x36.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: block;
+      margin: 0 auto;
+      height: 50px;
+      width: 36px;
+    }
+
+    .navbar .brand {
+      line-height: 100px;
+    }
+
+    .ticket {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
