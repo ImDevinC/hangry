@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="stylesheets/libraries/initializr/normalize.min.css">
-    <link rel="stylesheet" href="stylesheets/libraries/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/libraries/bootstrap/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="stylesheets/libraries/bootstrap/bootstrap.css">
+    <!-- <link rel="stylesheet" href="stylesheets/libraries/bootstrap/bootstrap-responsive.min.css"> -->
     <link rel="stylesheet" href="stylesheets/libraries/fontawesome/font-awesome.min.css">
     <link rel="stylesheet" href="stylesheets/custom/main.css">
 
@@ -25,72 +25,74 @@
       </div>
   
     <div class="container-fluid">
-      <div id="content" class="row-fluid">
-        <div class="span12">
+      <div id="content" class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="tab-content">
             
             <div id="venue-tab" class="tab-pane active">
               <div class="venue-ticket ticket">
-                <div class="row-fluid">
-                  <div class="span8">
+                <div class="row">
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                     <span>Name</span><br />
                     <span class="venue-name"></span>
                   </div>
-                  <div class="span4 pull">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull">
                     <span class="settings pull-right">
                       <i class="icon-cog" data-action="settings"></i>
                     </span><br>
                     <span class="btn-group pull-right">
-                      <button class="btn btn-danger" data-action="www" disabled><i class="icon-globe"></i></button>
-                      <button class="btn btn-danger" data-action="nav" disabled><i class="icon-map-marker"></i></button>
-                      <button class="btn btn-danger" data-action="pics" disabled><i class="icon-camera"></i></button>
+                      <button type="button" class="btn btn-danger" data-action="www" disabled><i class="icon-globe"></i></button>
+                      <button type="button" class="btn btn-danger" data-action="nav" disabled><i class="icon-map-marker"></i></button>
+                      <button type="button" class="btn btn-danger" data-action="pics" disabled><i class="icon-camera"></i></button>
                   </span>
                   </div>
                 </div>
-                <div class="row-fluid">
-                  <span>Location</span><br>
-                  <span class="venue-location"></span>
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span>Location</span><br>
+                    <span class="venue-location"></span>
+                  </div>
                 </div>
-                <div class="row-fluid">
-                  <div class="span4">
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <span>Category</span><br>
                     <span class="venue-category"></span>
                   </div>
-                  <div class="span4">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <span>Distance</span><br>
                     <span class="venue-distance"></span>
                   </div>
-                  <div class="span4">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <span>Rating</span><br>
                     <span class="venue-rating"></span>
                   </div>
                 </div>
-                <div class="row-fluid end-result hide">
+                <div class="row end-result hide">
                   <span class="end-message"></span>
                 </div>
-                <div class="row-fluid maybe-result hide">
+                <div class="row maybe-result hide">
                   <div class="accordion" id="accordion-maybe">
                   </div>
-                  <div class="row-fluid">
-                    <button class="btn btn-danger" data-action="restart">Restart</button>
+                  <div class="row">
+                    <button type="button" class="btn btn-danger" data-action="restart">Restart</button>
                   </div>
                 </div>
-                <div class="row-fluid decision-bar">
-                  <div class="span6">
-                    <button class="btn btn-block btn-warning" data-action="maybe" data-selection="maybe" disabled="disabled">Maybe</button>
+                <div class="row decision-bar">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <button type="button" class="btn btn-block btn-warning" data-action="maybe" data-selection="maybe" disabled="disabled">Maybe</button>
                   </div>
-                  <div class="span6">
-                    <button class="btn btn-block btn-danger" data-action="skip" data-selection="no" disabled="disabled">No</button>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <button type="button" class="btn btn-block btn-danger" data-action="skip" data-selection="no" disabled="disabled">No</button>
                   </div>
                 </div>
-                <div class="row-fluid image-container hide">
+                <div class="row image-container hide">
                   <div id="venue-carousel" class="carousel slide">
                     <center><div class="carousel-inner"></div></center>
                     <a class="carousel-control left" href="#venue-carousel" data-slide="prev">&lsaquo;</a>
                     <a class="carousel-control right" href="#venue-carousel" data-slide="next">&rsaquo;</a>
                   </div>
                 </div>
-                <div class="row-fluid map-container hide">
+                <div class="row map-container hide">
                   <div id='map-canvas' style="height: 400px"></div>
                 </div>
               </div>
@@ -98,30 +100,29 @@
           
             <div id="error-tab" class="tab-pane">
               <div class="error-ticket ticket">
-                <div class="row-fluid">
-                  <span class="error-text header"></span>
-                </div>
-                <div class="row-fluid">
-                  <div class="zip-code input-append">
-                    <input type="text" data-value="zip" placeholder="Zip code" maxlength="5"> <button class="btn btn-medium btn-danger" data-action="zip" disabled>Search</button>
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span class="error-text header"></span>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div id="settings-tab" class="tab-pane">
-              <div class="settings-ticket ticket">
-                <div class="row-fluid">
-                  <span class="settings-header header">Settings</span>
-                </div>
-                <div class="row-fluid">
-                  <div class="zip-code input-append">
-                    <input type="text" data-value="zip" placeholder="Zip code" maxlength="5">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
+                    <div class="zip-code input-group">
+                      <input type="text" class="form-control" data-value="zip" placeholder="Zip code" maxlength="5">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-danger" data-action="zip" disabled>Search</button>
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <!-- <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-16 col-xs-12">
+                    <div>Options</div>
+                    <input type="text" class="form-control col-lg-2 col-md-2 col-sm-2" data-value="distance" placeholder="Distance" maxlength="2">
+                  </div>
+                </div> -->
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -132,7 +133,7 @@
     </div>
 
     <script src="scripts/libraries/jquery/jquery-1.9.1.min.js"></script>
-    <script src="scripts/libraries/bootstrap/bootstrap.min.js"></script>
+    <script src="scripts/libraries/bootstrap/bootstrap.js"></script>
     <script src="scripts/prototypes/array.js"></script>
     <script src="scripts/custom/main.js"></script>
 

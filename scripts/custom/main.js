@@ -2,10 +2,11 @@ $(document).ready(function() {
 
   var appEnabled = false;
   var appLoaded = false;
-  var maybeList = new Array();
+  var maybeList = [];
   var restaurants;
   var venues;
   var zipCode;
+  var distance = 5;
 
   /***********
   * Quick access to tabs
@@ -54,7 +55,7 @@ $(document).ready(function() {
   * Quick access to inputs and outputs
   ***********/
   var errorText = '#error-tab .error-text';
-  var imageCarousel = '.image-container .carousel-inner'
+  var imageCarousel = '.image-container .carousel-inner';
   var zipCodeInput = 'input[data-value="zip"]';
 
   $(window).load(function() {
@@ -67,7 +68,7 @@ $(document).ready(function() {
 
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getVenue, showError, {timeout:10000});
-  } 
+  }
 
   $(picButton).click(function() {
     $(imageContainer).toggle();
@@ -111,12 +112,12 @@ $(document).ready(function() {
     checkLength();
     if (e.which === 13) {
       $(zipButton).focus().click();
-      return false; 
+      return false;
     }
   });
 
   function buildRow(key, value) {
-    return '<tr><th>' + key + '</th><td>' + value + '</td></tr>'
+    return '<tr><th>' + key + '</th><td>' + value + '</td></tr>';
   }
 
   function checkLength() {
@@ -181,9 +182,12 @@ $(document).ready(function() {
         return 'We couldn\'t find your location, are you sure you really exist?';
       case error.TIMEOUT:
         return 'Took too long to get your location, why you playin\' me like that?';
+      case 1337:
+        return 'We couldn\'t find any venues near you, do you live in the boonies?';
       default:
         return 'Oh man... you broke it, you broke everything! Way to go.';
     }
+    return 'Oh man... you broke it, you broke everything! Way to go.';
   }
 
   function getMilesFromYards(yards) {
@@ -241,6 +245,7 @@ $(document).ready(function() {
     var data = {
       limit: 50,
       oauth_token: 'LXAPH13IS5UHADJMPA5QWI2AH4PFB3ZYN1EFDGIJHWGG4IBV',
+      radius: metersToMiles(distance),
       section: 'food',
       v: '20130326'
     };
@@ -257,10 +262,14 @@ $(document).ready(function() {
       data: data,
       dataType: 'json',
       success: function(data) {
-        venues = data.response.groups[0].items;
-        venues.shuffle();
-        showVenue();
-        $('.decision-bar .btn').removeAttr('disabled');
+        if (data.response.totalResults > 0) {
+          venues = data.response.groups[0].items;
+          venues.shuffle();
+          showVenue();
+          $('.decision-bar .btn').removeAttr('disabled');
+        } else {
+          showError({code: 1337});
+        }
         appEnabled = true;
       },
       error: function(data) {
@@ -268,6 +277,10 @@ $(document).ready(function() {
       },
       url: url
     });
+  }
+
+  function metersToMiles(meters) {
+    return meters * 1609.34;
   }
 
   function openNav(currentVenue, address) {
@@ -355,7 +368,7 @@ $(document).ready(function() {
     if (currentVenue.url) {
       $(webButton).removeAttr('disabled');
       $(webButton).click(function() {
-        window.open(currentVenue.url)
+        window.open(currentVenue.url);
       });
     } else {
       $(webButton).attr('disabled', 'disabled');
@@ -399,14 +412,14 @@ $(document).ready(function() {
     }
     if (!appLoaded) {
       openSplash();
-    }    
+    }
   }
 
   function skipVenue() {
     if (appEnabled) {
       venues.shift();
       if (venues.length > 0) {
-        showVenue();  
+        showVenue();
       } else if (maybeList.length > 0) {
         $('.venue-ticket .row-fluid').hide();
         var accordion = '';
