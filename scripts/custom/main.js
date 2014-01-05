@@ -40,7 +40,7 @@ $(document).ready(function() {
   var picButton = '.btn[data-action="pics"]';
   var restartButton = '.btn[data-action="restart"]';
   var selectButton = '.btn[data-action="select"]';
-  var settingsButton = '.icon-cog[data-action="settings"]';
+  var settingsButton = '.fa fa-cog[data-action="settings"]';
   var skipButton = '.btn[data-action="skip"]';
   var webButton = '.btn[data-action="www"]';
   var zipButton = '.btn[data-action="zip"]';
@@ -243,7 +243,7 @@ $(document).ready(function() {
     var url = 'https://api.foursquare.com/v2/venues/explore';
 
     var data = {
-      limit: 50,
+      limit: 10,
       oauth_token: 'LXAPH13IS5UHADJMPA5QWI2AH4PFB3ZYN1EFDGIJHWGG4IBV',
       radius: metersToMiles(distance),
       section: 'food',
@@ -421,16 +421,16 @@ $(document).ready(function() {
       if (venues.length > 0) {
         showVenue();
       } else if (maybeList.length > 0) {
-        $('.venue-ticket .row-fluid').hide();
+        $('.venue-ticket .row').hide();
         var accordion = '';
         maybeList.forEach(function(venue) {
           accordion += formatAccordion(venue);
         });
         $('#accordion-maybe').html(accordion);
-        $('.maybe-result .row-fluid').show();
+        $('.maybe-result .row').show();
         $('.maybe-result').show();
       } else {
-        $('.venue-ticket .row-fluid').hide();
+        $('.venue-ticket .row').hide();
         $('.end-result').show();
         $('.end-message').text(getRandomTaunt());
       }
@@ -438,27 +438,30 @@ $(document).ready(function() {
   }
 
   function formatAccordion(venue) {
-    var result = '<div class="accordion-group">' +
-      '<div class="accordion-heading">' +
-        '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-maybe" href="#' + venue.id + '">' +
-        '<i class="icon-food"></i> ' + venue.name + '</a>' +
+    var result = '<div class="panel panel-default">' +
+      '<div class="panel-heading">' +
+        '<h4 class="panel-title" data-toggle="collapse" data-parent="#accordion-maybe" href="#' + venue.id + '">' +
+          '<i class="fa fa-cutlery"></i> ' + venue.name +
+        '</h4>' +
       '</div>' +
-      '<div id="' + venue.id + '" class="accordion-body collapse">' +
-        '<div class="accordion-inner">' +
-          '<div class="row-fluid">' +
-            '<span>Location: </span>' + getAddressString(venue.location).replace('<br/>', ', ') +
+      '<div id="' + venue.id + '" class="panel-collapse collapse">' +
+        '<div class="panel-body">' +
+          '<div class="row">' +
+            '<div class="col-xs-12">' +
+              '<span>Location: </span>' + getAddressString(venue.location).replace('<br/>', ', ') +
+            '</div>' +
           '</div>';
       if (venue.categories) {
-        result += '<div class="row-fluid"><span>Category: </span>' + venue.categories[0].name + '</div>';
+        result += '<div class="row"><div class="col-xs-12"><span>Category: </span>' + venue.categories[0].name + '</div></div>';
       }
       if (venue.location.distance) {
-        result += '<div class="row-fluid"><span>Distance: </span>' + getMilesFromYards(venue.location.distance) + ' Miles</div>';
+        result += '<div class="row"><div class="col-xs-12"><span>Distance: </span>' + getMilesFromYards(venue.location.distance) + ' Miles</div></div>';
       }
       if (venue.rating) {
-        result += '<div class="row-fluid"><span>Rating: </span>' + venue.rating + ' / 10</div>';
+        result += '<div class="row"><div class="col-xs-12"><span>Rating: </span>' + venue.rating + ' / 10</div></div>';
       }
       if (venue.url) {
-        result += '<div class="row-fluid"><span>Website: <span><a href="' + venue.url + '" target="_blank">' + venue.url + '</a></div>';
+        result += '<div class="row"><div class="col-xs-12"><span>Website: <span><a href="' + venue.url + '" target="_blank">' + venue.url + '</a></div></div>';
       }
       result += '</div>' +
         '</div>' +

@@ -16,6 +16,10 @@
     background-color: #FFF;
   }
 
+  #accordion-maybe {
+    padding-bottom: 5px;
+  }
+
   .container-fluid {
     background-color: #FFFFFF;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.065);
@@ -39,7 +43,7 @@
     border-top: 1px solid #CC3333;
     bottom: 0;
     left: 0;
-    overflow: none;
+    overflow: auto;
     width: 100%;
   }
 
@@ -62,9 +66,18 @@
     line-height: 32px;
   }
 
+  .image-container {
+    padding: 10px;
+  }
+
+  .map-container {
+    padding: 10px;
+  }
+
   .navbar {
+    border: none;
     margin: 0;
-    overflow: none;
+    overflow: hidden;
   }
   
   .navbar .brand {
@@ -82,6 +95,10 @@
     width: 100%;
   }
 
+  .navbar a.brand:hover {
+    text-decoration: none;
+  }
+
   .navbar-inner {
     background-color: #FF3333;
     background-image: none;
@@ -93,6 +110,10 @@
     height: 80px;
     padding: 0;
     position: relative;
+  }
+
+  .panel-title {
+    cursor: pointer;
   }
 
   .settings {
@@ -109,6 +130,7 @@
 
   .tab-pane {
     -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 20px;
   }
@@ -117,6 +139,7 @@
     background-color: #F7F7F7;
     box-shadow: 1px 1px 5px black;
     -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-family: "Trebuchet MS";
     margin-left: 25%;
