@@ -243,7 +243,7 @@ $(document).ready(function() {
     var url = 'https://api.foursquare.com/v2/venues/explore';
 
     var data = {
-      limit: 10,
+      limit: 50,
       oauth_token: 'LXAPH13IS5UHADJMPA5QWI2AH4PFB3ZYN1EFDGIJHWGG4IBV',
       radius: metersToMiles(distance),
       section: 'food',
