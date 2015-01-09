@@ -184,6 +184,20 @@
     color: #000;
   }
 
+  .carousel-control,
+  .carousel-control:hover,
+  .carousel-control:focus {
+    color: #FF3333;
+  }
+
+  .carousel-control.left {
+    background: none;
+  }
+
+  .carousel-control.right {
+    background: none;
+  }
+
   @media all and (max-device-width: 480px), all and (max-width: 800px) {
     body {
       padding: 0;
