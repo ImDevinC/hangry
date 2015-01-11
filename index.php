@@ -6,6 +6,8 @@
     <title>Hangry</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
 
     <link rel="stylesheet" href="stylesheets/libraries/initializr/normalize.min.css">
     <link rel="stylesheet" href="stylesheets/libraries/bootstrap/bootstrap.min.css">
